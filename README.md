@@ -4,6 +4,6 @@
 
 ## Contact
 
-- Discord : `jaack_o`
+- **Discord** : `jaack_o`
 - [SurvivalWorld](https://survivalworld.fr/)
 - [Walyverse](https://wiki.walyverse.fr/)
