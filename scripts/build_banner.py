@@ -31,10 +31,9 @@ COLUMNS = [
     ("03", "MODERATION", "disputes & sensitive cases"),
     ("04", "DISCORD DEV", "development & integration"),
 ]
-FOOTER = ("JAACK_O", "FRENCH MINECRAFT COMMUNITY", "HEAD ADMIN")
 
 # ------------------------------------------------------------------- design ---
-W, H = 1000, 666
+W, H = 1000, 636
 BG, PANEL, BORDER, RULE = "#0a0f1e", "#0d1428", "#1b2547", "#18203f"
 INK, MUTED, GOLD, NODE = "#eef1ff", "#7f89b3", "#f2c14e", "#3a4574"
 LEVELS = ["#131a30", "#4b3d17", "#86691f", "#c99a2c", "#f2c14e"]
@@ -205,7 +204,6 @@ def render(data):
                     f'<text x="{x:.1f}" y="{cy+65}" font-size="11.5" fill="{MUTED}">{escape(sub)}</text>')
         if i:
             cols.append(f'<line x1="{56 + i * colw:.1f}" y1="{cy}" x2="{56 + i * colw:.1f}" y2="{cy+72}" stroke="{RULE}"/>')
-    foot_y = H - 26
     grid = "".join(f'<line x1="{x}" y1="72" x2="{x}" y2="318" stroke="{RULE}" stroke-opacity="0.7"/>' for x in (330, 450, 570))
     if HERO == "photo":
         pfp = base64.b64encode((ROOT / "assets" / "pfp.jpg").read_bytes()).decode()
@@ -229,7 +227,7 @@ def render(data):
     <style>
       .pulse {{ transform-box: fill-box; transform-origin: center; animation: pulse 6s ease-out infinite; }}
       @keyframes pulse {{ 0% {{ transform: scale(1); opacity: 0.55; }} 65%, 100% {{ transform: scale(1.34); opacity: 0; }} }}
-      .bob {{ animation: bob 6s ease-in-out infinite; }}
+      .bob {{ animation: bob 4s ease-in-out infinite; }}
       @keyframes bob {{ 0%, 100% {{ transform: translateY(0); }} 50% {{ transform: translateY(-6px); }} }}
       @media (prefers-reduced-motion: reduce) {{ .pulse, .bob {{ animation: none; }} }}
     </style>
@@ -261,13 +259,6 @@ def render(data):
   {heatmap(data)}
 
   <g font-family="{MONO}">{"".join(cols)}</g>
-
-  <line x1="56" y1="{foot_y-30}" x2="{W-56}" y2="{foot_y-30}" stroke="{RULE}"/>
-  <g font-family="{MONO}" font-size="11.5" letter-spacing="2.4">
-    <text x="56" y="{foot_y}" font-weight="700" fill="{GOLD}">{escape(FOOTER[0])}</text>
-    <text x="{W/2}" y="{foot_y}" text-anchor="middle" fill="{MUTED}">{escape(FOOTER[1])}</text>
-    <text x="{W-56}" y="{foot_y}" text-anchor="end" fill="{MUTED}">{escape(FOOTER[2])}</text>
-  </g>
 </svg>
 '''
 
